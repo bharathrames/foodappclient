@@ -41,8 +41,8 @@ export const CreateRecipe = () => {
     event.preventDefault();
     try {
       await axios.post(
-        // "https://foodapp-abix.onrender.com/recipes",
-        "http://localhost:3001/recipes",
+         "https://foodapp-abix.onrender.com/recipes",
+        //"http://localhost:3001/recipes",
         { ...recipe },
         {
           headers: { authorization: cookies.access_token },
