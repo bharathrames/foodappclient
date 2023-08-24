@@ -6,12 +6,13 @@ export const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
 
+
   const userID = useGetUserID();
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("https://foodapp-abix.onrender.com/recipes");
+        const response = await axios.get("http://localhost:3001/recipes");
         setRecipes(response.data);
       } catch (err) {
         console.log(err);
@@ -21,7 +22,7 @@ export const Home = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `https://foodapp-abix.onrender.com/recipes/savedRecipes/ids/${userID}`
+          `http://localhost:3001/recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
@@ -35,7 +36,7 @@ export const Home = () => {
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put("https://foodapp-abix.onrender.com/recipes", {
+      const response = await axios.put("http://localhost:3001/recipes", { 
         recipeID,
         userID,
       });
@@ -46,9 +47,10 @@ export const Home = () => {
   };
 
   const isRecipeSaved = (id) => savedRecipes.includes(id);
-
+  
   return (
-    <div>
+    
+    <div  className="recepie">
       <h1>Recipes</h1>
       <ul>
         {recipes.map((recipe) => (
@@ -71,5 +73,18 @@ export const Home = () => {
         ))}
       </ul>
     </div>
+
+    
   );
 };
+
+
+
+
+
+  
+
+
+
+
+ 

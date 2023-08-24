@@ -13,15 +13,25 @@ export const Navbar = () => {
   };
   return (
     <nav className="navbar">
-      <div className="nav-item effect"><Link to="/">Home</Link></div>
-      <div className="nav-item effect"><Link to="/create-recipe">Create Recipe</Link></div>
-      <div className="nav-item effect"><Link to="/saved-recipes">Saved Recipes</Link></div>
-      {!cookies.access_token ? (
-        <div class="nav-item 3d-effect"><Link to="/auth">Login/Register</Link></div>
-      ) : (
-        <button onClick={logout}> Logout </button>
-      )}
-    </nav>
+<div className="title">Go Foods</div>
+    <div className="nav-item effect"><Link to="/">Home</Link></div>
+    {cookies.access_token && (
+      <>
+        <div className="nav-item effect"><Link to="/create-recipe">Create Recipe</Link></div>
+        <div className="nav-item effect"><Link to="/saved-recipes">Saved Recipes</Link></div>
+      </>
+    )}
+    {!cookies.access_token ? (
+      <>
+      <div class="nav-item 3d-effect"><Link to="/auth">Login/Register</Link></div>
+      </>
+    ) : (
+      <button onClick={logout}  className="log"> <span>Logout</span><i></i></button>
+    )}
+  </nav>
+  
   );
 };
+
+
 

@@ -24,7 +24,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const result = await axios.post("https://foodapp-abix.onrender.com/auth/login", {
+      const result = await axios.post("http://localhost:3001/auth/login", {
         username,
         password,
       });
@@ -59,7 +59,7 @@ const Login = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="res">Login</button>
       </form>
     </div>
   );
@@ -75,7 +75,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("https://foodapp-abix.onrender.com/auth/register", {
+      await axios.post("http://localhost:3001/auth/register", {
         username,
         password,
       });
@@ -107,7 +107,7 @@ const Register = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" className="res">Register</button>
       </form>
     </div>
   );

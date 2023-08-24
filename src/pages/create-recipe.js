@@ -3,7 +3,7 @@ import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { TextField } from "@mui/material";
+
 
 export const CreateRecipe = () => {
   const userID = useGetUserID();
@@ -41,7 +41,8 @@ export const CreateRecipe = () => {
     event.preventDefault();
     try {
       await axios.post(
-        "https://foodapp-abix.onrender.com/recipes",
+        // "https://foodapp-abix.onrender.com/recipes",
+        "http://localhost:3001/recipes",
         { ...recipe },
         {
           headers: { authorization: cookies.access_token },
@@ -59,17 +60,18 @@ export const CreateRecipe = () => {
     <div className="create-recipe">
       <h2>Create Recipe</h2>
       <form onSubmit={handleSubmit}>
-        {/* <label htmlFor="name">Name</label> */}
-        <TextField id="outlined-basic" label="Name" variant="outlined"
+        <label htmlFor="name">Name</label>
+        <input 
           type="text"
-          // id="name"
+           id="name"
           name="name"
+          fullWidth sx={{ m: 2 }}
           value={recipe.name}
           onChange={handleChange}
         />
         <label htmlFor="description">Description</label>
         <textarea
-          id="description"
+           id="description"
           name="description"
           value={recipe.description}
           onChange={handleChange}
@@ -84,9 +86,9 @@ export const CreateRecipe = () => {
             onChange={(event) => handleIngredientChange(event, index)}
           />
         ))}
-        <button type="button" onClick={handleAddIngredient}>
+        <div><button type="button" onClick={handleAddIngredient} className="button_slide slide_right "> 
           Add Ingredient
-        </button>
+        </button></div>
         <label htmlFor="instructions">Instructions</label>
         <textarea
           id="instructions"
@@ -110,8 +112,10 @@ export const CreateRecipe = () => {
           value={recipe.cookingTime}
           onChange={handleChange}
         />
-        <button type="submit">Create Recipe</button>
+       <div > <button type="submit" className="button_slide slide_right ">Create Recipe</button></div>
       </form>
     </div>
   );
 };
+
+
