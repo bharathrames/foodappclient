@@ -21,20 +21,20 @@ export const SavedRecipes = () => {
     fetchSavedRecipes();
   }, []);
   return (
+    <>
     <div>
-      <h1>Saved Recipes</h1>
-      <ul>
-        {savedRecipes.map((recipe) => (
-          <li key={recipe._id}>
-            <div>
-              <h2>{recipe.name}</h2>
-            </div>
-            <p>{recipe.description}</p>
-            <img src={recipe.imageUrl} alt={recipe.name} />
-            <p>Cooking Time: {recipe.cookingTime} minutes</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <h1 className="heading">Saved Recipes</h1>
+  <div>
+    {savedRecipes.map((recipe) => (
+      <div class="save-card" key={recipe._id}>
+        <h2>{recipe.name}</h2>
+        <p>{recipe.description}</p>
+        <img src={recipe.imageUrl} alt={recipe.name} />
+        <p>Cooking Time: {recipe.cookingTime} minutes</p>
+      </div>
+    ))}
+  </div>
+</div>
+      </>
   );
 };
